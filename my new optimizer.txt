@@ -1,0 +1,203 @@
+import os
+import subprocess
+import tkinter as tk
+from tkinter import messagebox
+
+class LucasOptimizer:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Lucas Optimizer")
+        self.root.geometry("800x500")
+        self.root.resizable(False, False)
+
+        # -----------------------------
+        # BLACK THEME COLORS
+        # -----------------------------
+        self.bg = "#0d0d0d"
+        self.fg = "#ffffff"
+        self.sidebar_bg = "#111111"
+        self.button_bg = "#1a1a1a"
+        self.button_hover = "#333333"
+        self.log_bg = "#0f0f0f"
+        self.log_fg = "#00ffcc"
+
+        self.root.configure(bg=self.bg)
+
+        # -----------------------------
+        # SIDEBAR
+        # -----------------------------
+        sidebar = tk.Frame(self.root, bg=self.sidebar_bg, width=200)
+        sidebar.pack(side="left", fill="y")
+
+        title = tk.Label(sidebar, text="Lucas Optimizer",
+                         font=("Segoe UI", 16, "bold"),
+                         bg=self.sidebar_bg, fg=self.fg)
+        title.pack(pady=20)
+
+        # Sidebar buttons
+        self.add_sidebar_button(sidebar, "Clear Temp Files", self.clear_temp)
+        self.add_sidebar_button(sidebar, "Clear Prefetch", self.clear_prefetch)
+        self.add_sidebar_button(sidebar, "Empty Recycle Bin", self.clear_recycle)
+        self.add_sidebar_button(sidebar, "Flush DNS Cache", self.flush_dns)
+        self.add_sidebar_button(sidebar, "Disable Startup Apps", self.disable_startup)
+        self.add_sidebar_button(sidebar, "System Info", self.system_info)
+        self.add_sidebar_button(sidebar, "FPS Booster", self.fps_booster)
+
+        # -----------------------------
+        # MAIN AREA
+        # -----------------------------
+        main = tk.Frame(self.root, bg=self.bg)
+        main.pack(side="right", fill="both", expand=True)
+
+        header = tk.Label(main, text="Optimization Log",
+                          font=("Segoe UI", 14, "bold"),
+                          bg=self.bg, fg=self.fg)
+        header.pack(pady=10)
+
+        # Log box
+        self.log_box = tk.Listbox(main, font=("Consolas", 10),
+                                  bg=self.log_bg, fg=self.log_fg)
+        self.log_box.pack(fill="both", expand=True, padx=20, pady=10)
+
+    # -----------------------------
+    # Sidebar button creator
+    # -----------------------------
+    def add_sidebar_button(self, frame, text, command):
+        btn = tk.Button(frame, text=text, width=20, command=command,
+                        bg=self.button_bg, fg=self.fg, relief="flat",
+                        activebackground=self.button_hover)
+        btn.pack(pady=5)
+
+        btn.bind("<Enter>", lambda e: btn.config(bg=self.button_hover))
+        btn.bind("<Leave>", lambda e: btn.config(bg=self.button_bg))
+
+    # -----------------------------
+    # Log helper
+    # -----------------------------
+    def log(self, text):
+        self.log_box.insert(tk.END, text)
+        self.log_box.yview_moveto(1)
+
+    # -----------------------------
+    # Optimization Functions
+    # -----------------------------
+    def clear_temp(self):
+        temp = os.getenv("TEMP")
+        count = 0
+        if temp and os.path.isdir(temp):
+            for root, dirs, files in os.walk(temp):
+                for f in files:
+                    try:
+                        os.remove(os.path.join(root, f))
+                        count += 1
+                    except:
+                        pass
+        self.log(f"✔ Cleared {count} temp files")
+
+    def clear_prefetch(self):
+        path = r"C:\Windows\Prefetch"
+        count = 0
+        if os.path.isdir(path):
+            for f in os.listdir(path):
+                try:
+                    os.remove(os.path.join(path, f))
+                    count += 1
+                except:
+                    pass
+        self.log(f"✔ Cleared {count} prefetch files")
+
+    def clear_recycle(self):
+        try:
+            subprocess.run("PowerShell.exe Clear-RecycleBin -Force", shell=True)
+            self.log("✔ Recycle Bin emptied")
+        except:
+            self.log("✖ Failed to empty Recycle Bin")
+
+    def flush_dns(self):
+        subprocess.run("ipconfig /flushdns", shell=True)
+        self.log("✔ DNS cache flushed")
+
+    def disable_startup(self):
+        startup_path = os.path.expandvars(
+            r"C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+        )
+        count = 0
+        if os.path.isdir(startup_path):
+            for f in os.listdir(startup_path):
+                try:
+                    os.remove(os.path.join(startup_path, f))
+                    count += 1
+                except:
+                    pass
+        self.log(f"✔ Disabled {count} startup items")
+
+    def system_info(self):
+        try:
+            info = subprocess.check_output("systeminfo", shell=True).decode(errors="ignore")
+            self.log("✔ System info loaded")
+            messagebox.showinfo("System Info", info[:2000] + "\n\n...(truncated)...")
+        except:
+            self.log("✖ Failed to load system info")
+
+    # -----------------------------
+    # FPS Booster
+    # -----------------------------
+    def fps_booster(self):
+        self.log("⚡ Starting FPS Booster...")
+
+        # Temp
+        temp = os.getenv("TEMP")
+        if temp and os.path.isdir(temp):
+            for root, dirs, files in os.walk(temp):
+                for f in files:
+                    try:
+                        os.remove(os.path.join(root, f))
+                    except:
+                        pass
+        self.log("✔ Temp cleared")
+
+        # Prefetch
+        prefetch = r"C:\Windows\Prefetch"
+        if os.path.isdir(prefetch):
+            for f in os.listdir(prefetch):
+                try:
+                    os.remove(os.path.join(prefetch, f))
+                except:
+                    pass
+        self.log("✔ Prefetch cleared")
+
+        # DNS
+        subprocess.run("ipconfig /flushdns", shell=True)
+        self.log("✔ DNS flushed")
+
+        # Shader cache
+        shader_paths = [
+            os.path.expandvars(r"%LOCALAPPDATA%\NVIDIA\DXCache"),
+            os.path.expandvars(r"%LOCALAPPDATA%\NVIDIA\GLCache"),
+            os.path.expandvars(r"%LOCALAPPDATA%\AMD\DxCache"),
+            os.path.expandvars(r"%LOCALAPPDATA%\Intel\ShaderCache"),
+        ]
+        for path in shader_paths:
+            if os.path.isdir(path):
+                for f in os.listdir(path):
+                    try:
+                        os.remove(os.path.join(path, f))
+                    except:
+                        pass
+        self.log("✔ GPU shader cache cleared")
+
+        # Power mode
+        subprocess.run("powercfg -setactive SCHEME_MIN", shell=True)
+        self.log("✔ High Performance mode enabled")
+
+        # Restart Explorer
+        subprocess.run("taskkill /f /im explorer.exe", shell=True)
+        subprocess.Popen("explorer.exe")
+        self.log("✔ Explorer restarted (RAM freed)")
+
+        self.log("⚡ FPS Booster complete!")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = LucasOptimizer(root)
+    root.mainloop()
