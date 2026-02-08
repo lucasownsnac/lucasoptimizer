@@ -3,379 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <title>LucasOptimizer – Official Site</title>
-    <meta name="description" content="LucasOptimizer — a clean, safe Windows performance suite with FPS Booster, Low Input Delay Mode, Gear Up Mode, and more.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><a class="btn" href="LucasOptimizer.exe" download>
-    Download LucasOptimizer.exe
-</a>
 
-      <style>
-    .spin-sub {
-        font-size: 14px;
-        color: #00e0ff;
-        margin-top: 40px;
-        text-align: center;
-        animation: slowspin 8s linear infinite;
-        opacity: 0.8;
-    }
-
-    @keyframes slowspin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-</style>
-
-<div class="spin-sub">
-    Sub to chatgptfnbr
-</div>
-  body {
+    <style>
+        body {
             margin: 0;
             background: #0a0a0a;
+            font-family: "Segoe UI", sans-serif;
             color: #e8e8e8;
-            font-family: Arial, sans-serif;
         }
 
-        header {
-            background: #111;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #222;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #00e0ff;
-        }
-
-        .beta {
-            font-size: 12px;
-            padding: 3px 8px;
-            border: 1px solid #ff4b81;
-            border-radius: 6px;
-            color: #ff4b81;
-            margin-left: 8px;
-        }
-
-        nav a {
-            color: #ccc;
-            margin-left: 20px;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        nav a:hover {
-            color: #00e0ff;
-        }
-
+        /* Glass Hero Section */
         .hero {
-            padding: 80px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .hero-text {
-            max-width: 500px;
+            padding: 120px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);
         }
 
         .hero h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
-
-        .hero h1 span {
+            font-size: 48px;
+            font-weight: 700;
             color: #00e0ff;
+            margin-bottom: 10px;
         }
 
         .hero p {
-            color: #b5b5b5;
-            margin-bottom: 20px;
+            font-size: 18px;
+            opacity: 0.8;
+            margin-bottom: 30px;
         }
 
-        .btn {
-            padding: 12px 22px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: bold;
-        }
-
-        .btn-primary {
-            background: #00e0ff;
-            color: #000;
-            box-shadow: 0 0 15px rgba(0, 224, 255, 0.4);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 0 25px rgba(0, 224, 255, 0.7);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            border: 1px solid #444;
-            color: #ccc;
-            margin-left: 10px;
-        }
-
-        .btn-ghost:hover {
-            border-color: #00e0ff;
+        .download-btn {
+            padding: 14px 28px;
+            background: rgba(0, 224, 255, 0.15);
+            border: 1px solid #00e0ff;
+            border-radius: 10px;
             color: #00e0ff;
+            font-size: 18px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
         }
 
+        .download-btn:hover {
+            background: rgba(0, 224, 255, 0.3);
+        }
+
+        /* Features Section */
         .features {
-            padding: 60px 10%;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
         }
 
         .features h2 {
-            margin-bottom: 10px;
+            text-align: center;
+            color: #00e0ff;
+            margin-bottom: 20px;
         }
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .feature-card {
-            background: #111;
+        .feature-box {
+            background: rgba(255, 255, 255, 0.05);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
+            margin-bottom: 15px;
             border: 1px solid #222;
         }
 
-        .feature-card h3 {
-            margin-bottom: 8px;
-            color: #00e0ff;
-        }
-
-        footer {
+        /* Script Box */
+        pre {
+            background: #111;
             padding: 20px;
-            text-align: center;
-            color: #777;
-            border-top: 1px solid #222;
-            margin-top: 40px;
+            border-radius: 10px;
+            overflow-x: auto;
+            color: #00ffcc;
+            font-size: 13px;
+            white-space: pre;
         }
 
-        footer span {
+        /* Spinning Text */
+        .spin-sub {
+            font-size: 14px;
             color: #00e0ff;
+            margin-top: 40px;
+            text-align: center;
+            animation: slowspin 8s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes slowspin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <div class="logo">LucasOptimizer <span class="beta">BETA</span></div>
-    <nav>
-        <a href="#features">Features</a>
-        <a href="#download">Download</a>
-        <a href="#about">About</a>
-    </nav>
-</header>
+    <!-- HERO -->
+    <section class="hero">
+        <h1>LucasOptimizer</h1>
+        <p>A clean, safe, modern Windows optimization suite.</p>
 
-<section class="hero">
-    <div class="hero-text">
-        <h1>Welcome to <span>LucasOptimizer</span></h1>
-        <p>The official site for LucasOptimizer — a clean, safe Windows performance suite with FPS Booster, Low Input Delay Mode, Gear Up Mode, and more.</p>
+        <!-- DOWNLOAD BUTTON UNDER TITLE -->
+        <a class="download-btn" href="LucasOptimizer.exe" download>
+            Download LucasOptimizer.exe
+        </a>
+    </section>
 
-        <button class="btn btn-primary">Download LucasOptimizer.exe</button>
-        <button class="btn btn-ghost">View Source</button>
-    </div>
-</section>
+    <!-- FEATURES -->
+    <section class="features">
+        <h2>Features</h2>
 
-<section class="features" id="features">
-    <h2>LucasOptimizer Features</h2>
-    <p>Focused tools that actually help — no fake sliders, no bloat.</p>
+        <div class="feature-box">✔ Clear Temp Files</div>
+        <div class="feature-box">✔ Clear Prefetch</div>
+        <div class="feature-box">✔ Empty Recycle Bin</div>
+        <div class="feature-box">✔ Flush DNS Cache</div>
+        <div class="feature-box">✔ Disable Startup Apps</div>
+        <div class="feature-box">✔ System Info Viewer</div>
+        <div class="feature-box">✔ FPS Booster Mode</div>
+    </section>
 
-    <div class="feature-grid">
-        <div class="feature-card">
-            <h3>FPS Booster</h3>
-            <p>Clears temp, prefetch, DNS, and shader cache for smoother gameplay.</p>
-        </div>
+    <!-- PYTHON SCRIPT SECTION -->
+    <section class="features" id="script">
+        <h2>LucasOptimizer Python Script</h2>
+        <p>This is the full Python source code for the LucasOptimizer desktop app.</p>
 
-        <div class="feature-card">
-            <h3>Gear Up Mode</h3>
-            <p>High‑performance mode for heavy gaming or editing sessions.</p>
-        </div>
+        <pre><code>
+PASTE YOUR PYTHON SCRIPT HERE
+        </code></pre>
+    </section>
 
-        <div class="feature-card">
-            <h3>Low Input Delay Mode</h3>
-            <p>Foreground priority, UI delay tweaks, and network refresh.</p>
-        </div>
-
-        <div class="feature-card">
-            <h3>Secure Boot Check</h3>
-            <p>Quickly check if your system has Secure Boot enabled.</p>
-        </div>
-    </div>
-</section>
-
-<footer>
-    © <span>LucasOptimizer</span> — Official Site. Safe, visual‑only system tools.
-</footer>
+    <!-- SPINNING TEXT -->
+    <div class="spin-sub">Sub to chatgptfnbr</div>
 
 </body>
 </html>
-<section class="features" id="script">
-    <h2>LucasOptimizer Python Script</h2>
-    <p>This is the full Python source code for the LucasOptimizer desktop app.</p>
-
-    <pre style="background:#111; color:#00ffcc; padding:20px; border-radius:10px; overflow-x:auto; white-space:pre; font-size:13px;">
-<code>
-import os
-import subprocess
-import tkinter as tk
-from tkinter import messagebox
-
-class LucasOptimizer:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Lucas Optimizer")
-        self.root.geometry("800x500")
-        self.root.resizable(False, False)
-
-        self.bg = "#0d0d0d"
-        self.fg = "#ffffff"
-        self.sidebar_bg = "#111111"
-        self.button_bg = "#1a1a1a"
-        self.button_hover = "#333333"
-        self.log_bg = "#0f0f0f"
-        self.log_fg = "#00ffcc"
-
-        self.root.configure(bg=self.bg)
-
-        sidebar = tk.Frame(self.root, bg=self.sidebar_bg, width=200)
-        sidebar.pack(side="left", fill="y")
-
-        title = tk.Label(sidebar, text="Lucas Optimizer",
-                         font=("Segoe UI", 16, "bold"),
-                         bg=self.sidebar_bg, fg=self.fg)
-        title.pack(pady=20)
-
-        self.add_sidebar_button(sidebar, "Clear Temp Files", self.clear_temp)
-        self.add_sidebar_button(sidebar, "Clear Prefetch", self.clear_prefetch)
-        self.add_sidebar_button(sidebar, "Empty Recycle Bin", self.clear_recycle)
-        self.add_sidebar_button(sidebar, "Flush DNS Cache", self.flush_dns)
-        self.add_sidebar_button(sidebar, "Disable Startup Apps", self.disable_startup)
-        self.add_sidebar_button(sidebar, "System Info", self.system_info)
-        self.add_sidebar_button(sidebar, "FPS Booster", self.fps_booster)
-
-        main = tk.Frame(self.root, bg=self.bg)
-        main.pack(side="right", fill="both", expand=True)
-
-        header = tk.Label(main, text="Optimization Log",
-                          font=("Segoe UI", 14, "bold"),
-                          bg=self.bg, fg=self.fg)
-        header.pack(pady=10)
-
-        self.log_box = tk.Listbox(main, font=("Consolas", 10),
-                                  bg=self.log_bg, fg=self.log_fg)
-        self.log_box.pack(fill="both", expand=True, padx=20, pady=10)
-
-    def add_sidebar_button(self, frame, text, command):
-        btn = tk.Button(frame, text=text, width=20, command=command,
-                        bg=self.button_bg, fg=self.fg, relief="flat",
-                        activebackground=self.button_hover)
-        btn.pack(pady=5)
-
-        btn.bind("&lt;Enter&gt;", lambda e: btn.config(bg=self.button_hover))
-        btn.bind("&lt;Leave&gt;", lambda e: btn.config(bg=self.button_bg))
-
-    def log(self, text):
-        self.log_box.insert(tk.END, text)
-        self.log_box.yview_moveto(1)
-
-    def clear_temp(self):
-        temp = os.getenv("TEMP")
-        count = 0
-        if temp and os.path.isdir(temp):
-            for root, dirs, files in os.walk(temp):
-                for f in files:
-                    try:
-                        os.remove(os.path.join(root, f))
-                        count += 1
-                    except:
-                        pass
-        self.log(f"✔ Cleared {count} temp files")
-
-    def clear_prefetch(self):
-        path = r"C:\Windows\Prefetch"
-        count = 0
-        if os.path.isdir(path):
-            for f in os.listdir(path):
-                try:
-                    os.remove(os.path.join(path, f))
-                    count += 1
-                except:
-                    pass
-        self.log(f"✔ Cleared {count} prefetch files")
-
-    def clear_recycle(self):
-        try:
-            subprocess.run("PowerShell.exe Clear-RecycleBin -Force", shell=True)
-            self.log("✔ Recycle Bin emptied")
-        except:
-            self.log("✖ Failed to empty Recycle Bin")
-
-    def flush_dns(self):
-        subprocess.run("ipconfig /flushdns", shell=True)
-        self.log("✔ DNS cache flushed")
-
-    def disable_startup(self):
-        startup_path = os.path.expandvars(
-            r"C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
-        )
-        count = 0
-        if os.path.isdir(startup_path):
-            for f in os.listdir(startup_path):
-                try:
-                    os.remove(os.path.join(startup_path, f))
-                    count += 1
-                except:
-                    pass
-        self.log(f"✔ Disabled {count} startup items")
-
-    def system_info(self):
-        try:
-            info = subprocess.check_output("systeminfo", shell=True).decode(errors="ignore")
-            self.log("✔ System info loaded")
-            messagebox.showinfo("System Info", info[:2000] + "\n\n...(truncated)...")
-        except:
-            self.log("✖ Failed to load system info")
-
-    def fps_booster(self):
-        self.log("⚡ Starting FPS Booster...")
-
-        temp = os.getenv("TEMP")
-        if temp and os.path.isdir(temp):
-            for root, dirs, files in os.walk(temp):
-                for f in files:
-                    try:
-                        os.remove(os.path.join(root, f))
-                    except:
-                        pass
-        self.log("✔ Temp cleared")
-
-        prefetch = r"C:\Windows\Prefetch"
-        if os.path.isdir(prefetch):
-            for f in os.listdir(prefetch):
-                try:
-                    os.remove(os.path.join(prefetch, f))
-                except:
-                    pass
-        self.log("✔ Prefetch cleared")
-
-        subprocess.run("ipconfig /flushdns", shell=True)
-        self.log("✔ DNS flushed")
-
-        shader_paths = [
-            os.path.expandvars(r"%LOCALAPPDATA%\NVIDIA\DXCache"),
-            os.path.expandvars(r"%LOCALAPPDATA%\NVIDIA\GLCache"),
-            os.path.expandvars(r"%LOCALAPPDATA%\AMD\DxCache"),
-            os.path.expandvars(r"%LOCALAPPDATA%\Intel\ShaderCache"),
-        ]
-        for path
